@@ -603,6 +603,53 @@ export default function LetterPage() {
               </li>
             </ul>
           </p>
+          <h2
+            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+          >
+            So here's the deal.
+          </h2>
+          <p>
+            <ul className='list-disc pl-6 space-y-2 mt-2'>
+              <li>
+                <strong>
+                  I will finish building this by May 6th, and let people sign
+                  up.
+                </strong>
+                I understand you'd be concerned that I previously did not build
+                the app after winning a hackathon. But now I have better
+                understanding around everything and more importantly, I have
+                better self-discipline. Therefore, if I do not finish building
+                the app by the end of May 6th, I will refund your money and pass
+                it to the next candidate.
+              </li>
+              <li>
+                <strong>I will give more back to the community.</strong>
+                <Link
+                  href='https://github.com/anaclumos?tab=sponsoring'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  I already sponsor more open-source projects than many of the
+                  companies
+                </Link>
+                , only because I think they're cool. If you sponsor me with this
+                project, I will double down and even expand my current GitHub
+                Sponsor & new dependencies.
+              </li>
+            </ul>
+          </p>
+          <p>
+            I totally understand I am in a unique position that makes it hard
+            for Vercel to support me. I totally understand that. This is more of
+            my personal manifesto instead of an appeal. A journal, and a record
+            for me to discipline myself to put myself back into builder mode. So
+            if anything, I hope you enjoyed reading my anti-agile manifesto.
+          </p>
+          <h2
+            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+          >
+            Sunghyun Cho
+          </h2>
         </CardContent>
       </Card>
     </div>
