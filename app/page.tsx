@@ -2,9 +2,16 @@
 
 import HighlightPopover from '@/components/highlight-popover'
 import MagicMoveWord from '@/components/magic-move-word'
-import { Card } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 import { Dancing_Script } from 'next/font/google'
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const dancingScript = Dancing_Script({
   subsets: ['latin'],
@@ -12,239 +19,183 @@ const dancingScript = Dancing_Script({
 })
 
 export default function LetterPage() {
-  const [clickedItems, setClickedItems] = useState<Record<string, boolean>>({
-    hobbies: false,
-    reading: false,
-    cafes: false,
-    energy: false,
-    watching: false,
-    signature: false,
-  })
-
-  const [highlightClasses, setHighlightClasses] = useState<
-    Record<string, string>
-  >({
-    hobbies: '',
-    reading: '',
-    cafes: '',
-    energy: '',
-    watching: '',
-  })
-
-  useEffect(() => {
-    // Assign random highlight classes on initial render
-    const highlights = {} as Record<string, string>
-    const items = ['hobbies', 'reading', 'cafes', 'energy', 'watching']
-
-    for (const item of items) {
-      const randomClass = `highlight-${Math.floor(Math.random() * 10) + 1}`
-      highlights[item] = randomClass
-    }
-
-    setHighlightClasses(highlights)
-  }, [])
-
-  const handleClick = (id: string) => {
-    setClickedItems((prev) => ({
-      ...prev,
-      [id]: true,
-    }))
-  }
-
   return (
-    <div className='min-h-screen w-full flex items-start justify-center p-4 md:p-8 bg-dotted-pattern bg-fixed'>
-      <Card className='w-full max-w-3xl rounded-3xl shadow-lg my-8'>
-        <div className='p-6 md:p-10'>
-          <div className='space-y-6'>
-            <div className='space-y-2'>
-              <h1 className='text-2xl font-bold'>Dear Friend,</h1>
-              <p className='text-muted-foreground text-sm'>April 7, 2025</p>
-            </div>
+    <div className='min-h-screen w-full flex items-start justify-center p-4 md:p-8 bg-dotted-pattern bg-fixed leading-8'>
+      <Card className='w-full max-w-3xl shadow-lg my-8'>
+        <CardHeader>
+          <CardTitle className='w-full flex items-center justify-between align-top'>
+            <span
+              className={`${dancingScript.className} text-3xl text-gray-800 -rotate-3 inline-block`}
+            >
+              Being Anti-Agile
+            </span>
+            <span className='text-xs text-muted-foreground inline-block items-center flex gap-1 bg-gray-100 rounded px-2 py-1'>
+              <span className='h-2 w-2 bg-red-500 rounded-full animate-pulse inline-block' />{' '}
+              means clickable
+            </span>
+          </CardTitle>
+          <CardDescription>April 11, 2025</CardDescription>
+        </CardHeader>
+        <CardContent className='space-y-6'>
+          <p>
+            A lot of indiepreneurs and founders tout the importance of being{' '}
+            <HighlightPopover
+              triggerContent='antifragile'
+              popoverTitle='Antifragility'
+              popoverContent={
+                <p className='text-xs text-muted-foreground'>
+                  Antifragility is the idea that you can thrive in adversity and
+                  grow stronger from challenges. Turning the tides, extracting
+                  opportunity from danger.
+                </p>
+              }
+            />
+            . Well... I did quite the opposite. I turned a great opportunity
+            into a lagging product.
+          </p>
 
-            <p>
-              I hope this letter finds you well. It's been quite some time since
-              we last spoke, and I wanted to reach out and reconnect.
-            </p>
+          <p>In a way, I flipped some character sequences.</p>
 
-            <div>
-              Life has been quite the adventure lately. I've been exploring{' '}
+          <div className='flex justify-center w-full'>
+            <MagicMoveWord
+              scrambledWord='I was, antifragile'
+              correctWord='I was anti-agile, fr'
+            />
+          </div>
+
+          <p>
+            This is my story of how I kept a great potential collecting dust for
+            two years.
+          </p>
+
+          <Separator />
+
+          <h2
+            className={`${dancingScript.className} text-xl text-gray-800 inline-block`}
+          >
+            Circa 2023...
+          </h2>
+
+          <p>
+            When the GPT API was first released, I was one of the quick to
+            create an agentic news notification system with GPT, first starting
+            with Hacker News. I had a couple of reasonings and philosophies
+            while building it.
+          </p>
+
+          <ul className='list-disc pl-8 space-y-1'>
+            <li>
               <HighlightPopover
-                id='hobbies'
-                highlightClass={highlightClasses.hobbies}
-                isClicked={clickedItems.hobbies}
-                handleClick={handleClick}
-                triggerContent='new hobbies'
-                popoverTitle='New Hobbies'
-                popoverContent={
-                  <p className='text-xs text-muted-foreground'>
-                    I've taken up watercolor painting and hiking on weekends.
-                    The mountains have been particularly beautiful this spring.
-                  </p>
-                }
-              />{' '}
-              and interests that have brought me a great deal of joy and
-              fulfillment. The changing seasons always remind me of our
-              conversations about how time passes and how we grow with it.
-            </div>
-
-            <p>
-              Do you remember those long walks we used to take through the park?
-              The way the light filtered through the trees, creating patterns on
-              the ground beneath our feet? I find myself thinking about those
-              moments more often these days.
-            </p>
-
-            <div>
-              I've been{' '}
-              <HighlightPopover
-                id='reading'
-                highlightClass={highlightClasses.reading}
-                isClicked={clickedItems.reading}
-                handleClick={handleClick}
-                triggerContent='reading more'
-                popoverTitle='Book Recommendations'
-                popoverContent={
-                  <ul className='text-xs text-muted-foreground list-disc pl-4 space-y-1'>
-                    <li>"The Overstory" by Richard Powers</li>
-                    <li>"Klara and the Sun" by Kazuo Ishiguro</li>
-                    <li>
-                      "The Ministry for the Future" by Kim Stanley Robinson
-                    </li>
-                  </ul>
-                }
-              />{' '}
-              lately – diving into books that challenge my perspective and
-              broaden my understanding of the world. I think you'd appreciate
-              some of the authors I've discovered. Perhaps we could exchange
-              recommendations sometime?
-            </div>
-
-            <p>
-              Work has been keeping me busy, but in a good way. I'm finding
-              purpose in what I do, and that makes all the difference. I hope
-              your professional endeavors are bringing you similar satisfaction.
-            </p>
-
-            <div>
-              The city has changed since you were last here.{' '}
-              <HighlightPopover
-                id='cafes'
-                highlightClass={highlightClasses.cafes}
-                isClicked={clickedItems.cafes}
-                handleClick={handleClick}
-                triggerContent='New cafés have opened'
-                popoverTitle='New Places to Visit'
-                popoverContent={
+                triggerContent='News should come to me, not vice versa.'
+                popoverTitle={
                   <>
-                    <p className='text-xs text-muted-foreground mb-1'>
-                      Here are some spots you'd love:
-                    </p>
-                    <ul className='text-xs text-muted-foreground list-disc pl-4 space-y-1'>
-                      <li>Riverside Café - amazing pastries</li>
-                      <li>The Old Mill - now an art gallery</li>
-                      <li>Central Park - completely renovated</li>
-                    </ul>
+                    <Link
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-blue-500'
+                      href='https://www.theverge.com/2023/1/31/23579552/artifact-instagram-cofounders-kevin-systrom-mike-krieger-news-app'
+                    >
+                      Artifact
+                    </Link>
+                    : The TikTok for text
                   </>
                 }
-              />
-              , old buildings have been renovated, and there's a{' '}
-              <HighlightPopover
-                id='energy'
-                highlightClass={highlightClasses.energy}
-                isClicked={clickedItems.energy}
-                handleClick={handleClick}
-                triggerContent='vibrant energy'
-                popoverTitle='City Events'
                 popoverContent={
-                  <p className='text-xs text-muted-foreground'>
-                    The city has been hosting weekly outdoor concerts, art
-                    festivals, and farmers markets. The cultural scene has
-                    really blossomed in the past year.
-                  </p>
-                }
-              />{' '}
-              that permeates the streets. You should visit sometime – I'd be
-              happy to show you around.
-            </div>
-
-            <p>
-              I've been reflecting on our friendship and the impact you've had
-              on my life. Your wisdom, kindness, and unique perspective have
-              shaped me in ways I'm still discovering. For that, I am eternally
-              grateful.
-            </p>
-
-            <div>
-              As I write this, I'm sitting by the window,{' '}
-              <HighlightPopover
-                id='watching'
-                highlightClass={highlightClasses.watching}
-                isClicked={clickedItems.watching}
-                handleClick={handleClick}
-                triggerContent='watching the world go by'
-                popoverTitle='My View'
-                popoverContent={
-                  <p className='text-xs text-muted-foreground'>
-                    From my apartment, I can see the old clocktower, the river
-                    winding through the city, and the mountains in the distance.
-                    It's especially beautiful at sunset.
-                  </p>
-                }
-              />
-              . It's a simple pleasure, but one that brings me peace. I hope
-              you're finding your own moments of tranquility amidst life's
-              chaos.
-            </div>
-
-            <p>
-              I'd love to hear from you when you have the time. Tell me about
-              your adventures, your challenges, your triumphs. Share with me the
-              small moments that have made you smile and the big decisions that
-              have changed your path.
-            </p>
-
-            <p>
-              Until then, take care of yourself. Remember to pause and breathe,
-              to find beauty in the ordinary, and to be gentle with yourself as
-              you navigate this complex world.
-            </p>
-
-            <div className='pt-6'>
-              <p>With warmth and affection,</p>
-
-              <div className='mt-6 ml-8'>
-                <HighlightPopover
-                  id='signature'
-                  highlightClass=''
-                  isClicked={clickedItems.signature}
-                  handleClick={handleClick}
-                  triggerContent={
-                    <span
-                      className={`${dancingScript.className} text-3xl text-gray-800 -rotate-3 inline-block`}
+                  <p className='text-xs text-muted-foreground line-height'>
+                    Artifact was a personalized news app developed by Instagram
+                    co-founders Kevin Systrom and Mike Krieger. The more you
+                    engage with the app, the better it becomes at surfacing
+                    relevant content. However,{' '}
+                    <Link
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-blue-500'
+                      href='https://www.theverge.com/2024/1/12/24036539/artifact-shutting-down-kevin-systrom'
                     >
-                      Sunghyun Cho
-                    </span>
-                  }
-                  popoverContent={
-                    <p className='text-sm text-muted-foreground italic'>
-                      Of course this is not a legal signature
-                    </p>
-                  }
-                />
-              </div>
-            </div>
-
-            {/* Scrambled Words Section */}
-            <div className='mt-12 pt-6 border-t border-gray-200'>
-              <h3 className='text-lg font-medium mb-4'>
-                Hover over the scrambled word to see the magic:
-              </h3>
-              <div className='flex flex-wrap gap-3 justify-center'>
-                <MagicMoveWord scrambledWord='mysyter' correctWord='mystery' />
-              </div>
-            </div>
-          </div>
-        </div>
+                      it didn't even last a year
+                    </Link>
+                    . I just think this just turned news into doomscrolling.
+                  </p>
+                }
+              />
+            </li>
+            <li>
+              <HighlightPopover
+                triggerContent='Tangible Algorithm'
+                popoverTitle={
+                  <Link
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-500'
+                    href='https://www.theatlantic.com/technology/archive/2022/11/tiktok-instagram-video-feeds-ai-algorithm/672002/'
+                  >
+                    Tiktokification
+                  </Link>
+                }
+                popoverContent={
+                  <p className='text-xs text-muted-foreground line-height'>
+                    Tiktokification is the trend of companies and platforms
+                    adapting TikTok's algorithmic approach to their own products
+                    and services. We are, in a way, paying{' '}
+                    <Link
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-blue-500'
+                      href='https://doctorow.medium.com/big-techs-attention-rents-fe97ba3fad90'
+                    >
+                      attention rents
+                    </Link>
+                    .
+                  </p>
+                }
+              />
+            </li>
+            <li>
+              <HighlightPopover
+                triggerContent='i18n-native'
+                popoverTitle={
+                  <Link
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-500 italic'
+                    href='https://en.wikiquote.org/wiki/William_Gibson#:~:text=Press%20(December%201991)-,The%20future%20is%20already%20here%20%E2%80%94%20it%27s%20just%20not%20very%20evenly%20distributed.,-He%20is%20reported'
+                  >
+                    The future is already here. It's just not very evenly
+                    distributed.
+                  </Link>
+                }
+                popoverContent={
+                  <p className='text-xs text-muted-foreground line-height'>
+                    For example, my friends in the US learned about GPT-4o Image
+                    Gen in late March, whereas my Korean friends leared about it
+                    in early April. Being AI-native, I wanted to fix that.
+                  </p>
+                }
+              />
+            </li>
+            <li>
+              <HighlightPopover
+                triggerContent='Open Source'
+                popoverTitle={
+                  <Link
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-blue-500'
+                    href='https://ossacc.com/'
+                  >
+                    OSS / ACC
+                  </Link>
+                }
+                popoverContent={
+                  <p className='text-xs text-muted-foreground line-height'>
+                    As such, being so anti-tiktok, I thought the apex of user
+                    controllability and democratic access was open source.
+                  </p>
+                }
+              />
+            </li>
+          </ul>
+        </CardContent>
       </Card>
     </div>
   )

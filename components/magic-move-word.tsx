@@ -1,108 +1,184 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
-// Magic moving word scrambling component with fixed states
-const MagicMoveWord = ({
-  scrambledWord,
-  correctWord,
-}: { scrambledWord: string; correctWord: string }) => {
-  const [isHovering, setIsHovering] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
+interface MagicMoveWordProps {
+  scrambledWord: string
+  correctWord: string
+}
 
-  // Calculate letter width based on container and word length
-  const letterWidth = 20 // px
-  const letterSpacing = 5 // px
-  const totalWidth = correctWord.length * (letterWidth + letterSpacing)
+type MappedChar = {
+  char: string
+  scrambledIndex: number | null // Where this char is in the scrambled word (if it existed)
+  correctIndex: number | null // Where this char is in the correct word (if it exists)
+}
 
-  // Calculate starting position to center the word
-  const startX =
-    (totalWidth - correctWord.length * (letterWidth + letterSpacing)) / 2
+/**
+ * Build a list of all characters that appear in the scrambled or correct words,
+ * matching them where possible. If a char does not match, it becomes "extra" or "new".
+ */
+function buildMapping(scrambled: string, correct: string): MappedChar[] {
+  const sArr = scrambled.split('')
+  const cArr = correct.split('')
 
-  // Create mapping between scrambled and correct positions
-  const getPositionMap = () => {
-    const map: Record<number, number> = {}
+  // Keep track of which correct positions have been used
+  const used = new Set<number>()
 
-    // For each letter in the correct word, find its position in the scrambled word
-    for (let i = 0; i < correctWord.length; i++) {
-      const letter = correctWord[i]
+  const result: MappedChar[] = []
 
-      // Find this letter in the scrambled word
-      for (let j = 0; j < scrambledWord.length; j++) {
-        if (scrambledWord[j] === letter && map[j] === undefined) {
-          map[j] = i
-          break
-        }
+  // 1) Match each scrambled char to the first unused identical char in correct
+  for (let i = 0; i < sArr.length; i++) {
+    const sChar = sArr[i]
+    let matchedIndex = -1
+    for (let j = 0; j < cArr.length; j++) {
+      if (!used.has(j) && cArr[j] === sChar) {
+        matchedIndex = j
+        used.add(j)
+        break
       }
     }
-
-    return map
+    if (matchedIndex >= 0) {
+      // matched char
+      result.push({
+        char: sChar,
+        scrambledIndex: i,
+        correctIndex: matchedIndex,
+      })
+    } else {
+      // no match => "extra" char
+      result.push({
+        char: sChar,
+        scrambledIndex: i,
+        correctIndex: null,
+      })
+    }
   }
 
-  const positionMap = getPositionMap()
+  // 2) Add any "new" chars from correct that had no match
+  for (let j = 0; j < cArr.length; j++) {
+    if (!used.has(j)) {
+      result.push({
+        char: cArr[j],
+        scrambledIndex: null,
+        correctIndex: j,
+      })
+    }
+  }
+
+  return result
+}
+
+export default function MagicMoveWord({
+  scrambledWord,
+  correctWord,
+}: MagicMoveWordProps) {
+  const [isScrambled, setIsScrambled] = useState(true)
+  const [hasBeenOpened, setHasBeenOpened] = useState(false)
+
+  // Build our mapping of characters (matched, extra, or new)
+  const mappedChars = buildMapping(scrambledWord, correctWord)
+
+  // Basic letter styling
+  const letterWidth = 20
+  const letterSpacing = 5
+
+  // Calculate *separate* widths
+  const scrambledWidth = scrambledWord.length * (letterWidth + letterSpacing)
+  const correctWidth = correctWord.length * (letterWidth + letterSpacing)
+
+  const handleClick = () => {
+    setIsScrambled((prev) => !prev)
+    if (!hasBeenOpened) {
+      setHasBeenOpened(true)
+    }
+  }
 
   return (
     <div
-      ref={containerRef}
-      className='inline-block cursor-pointer mx-1 px-3 py-2 bg-gray-100 rounded-md flex items-center justify-center'
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      style={{
-        width: `${totalWidth + 20}px`,
-        height: '40px',
-        position: 'relative',
-      }}
+      className='inline-flex items-center justify-center bg-gray-50 rounded p-2 relative cursor-pointer select-none'
+      style={{ width: '100%', height: 60 }}
+      onClick={handleClick}
+      onKeyUp={handleClick}
     >
-      <div className='relative w-full h-full flex items-center justify-center'>
-        {scrambledWord.split('').map((letter, scrambledIndex) => {
-          // Get the position in the correct word
-          const correctIndex = positionMap[scrambledIndex] || scrambledIndex
+      {/* Pulsing red dot if not opened */}
+      {!hasBeenOpened && (
+        <span className='absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse' />
+      )}
 
-          // Calculate positions (centered)
-          const scrambledX =
-            startX + scrambledIndex * (letterWidth + letterSpacing)
-          const correctX = startX + correctIndex * (letterWidth + letterSpacing)
+      {/* 
+          Instead of a static width, we animate from the scrambled width
+          to the correct width. 
+      */}
+      <motion.div
+        className='relative'
+        style={{ height: 40 }}
+        initial={{ width: scrambledWidth }}
+        animate={{ width: isScrambled ? scrambledWidth : correctWidth }}
+        transition={{ type: 'spring', stiffness: 500, damping: 100 }}
+      >
+        {mappedChars.map((item, index) => {
+          const { char, scrambledIndex, correctIndex } = item
+
+          // Positions for scrambled vs correct
+          const fromX =
+            scrambledIndex !== null
+              ? scrambledIndex * (letterWidth + letterSpacing)
+              : // if it's a NEW char, start near the final X but invisible
+                (correctIndex ?? 0) * (letterWidth + letterSpacing)
+
+          const toX =
+            correctIndex !== null
+              ? correctIndex * (letterWidth + letterSpacing)
+              : fromX // if it's an EXTRA char, same X -> fade out
+
+          // "extra" chars => fade out on click
+          const isExtra = correctIndex === null
+          // "new" chars => fade in on click
+          const isNew = scrambledIndex === null
 
           return (
             <motion.div
-              key={correctIndex}
+              key={`${index}-${char}`}
               className='absolute flex items-center justify-center text-lg font-medium'
-              initial={false}
               style={{
-                width: `${letterWidth}px`,
-                height: '30px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
                 top: '50%',
-                marginTop: '-15px',
-                backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                borderRadius: '4px',
+                left: fromX,
+                width: letterWidth,
+                height: 30,
+                marginTop: -15,
+                borderRadius: 4,
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
               }}
-              animate={{
-                left: isHovering ? `${correctX}px` : `${scrambledX}px`,
-                scale: isHovering ? [1, 1.2, 1] : 1,
-                color: isHovering ? '#000000' : '#666666',
-                transition: {
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 20,
-                  scale: {
-                    duration: 0.3,
-                    times: [0, 0.5, 1],
-                    ease: 'easeInOut',
-                  },
-                },
+              initial={
+                isNew
+                  ? { opacity: 0, scale: 0.7 } // new chars start invisible
+                  : { opacity: 1, scale: 1 }
+              }
+              animate={
+                !isScrambled
+                  ? {
+                      left: toX,
+                      opacity: isExtra ? 0 : 1,
+                      scale: isExtra ? 0.5 : 1,
+                    }
+                  : {
+                      left: fromX,
+                      opacity: isNew ? 0 : 1,
+                      scale: isNew ? 0.7 : 1,
+                    }
+              }
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 20,
               }}
             >
-              {letter}
+              {char}
             </motion.div>
           )
         })}
-      </div>
+      </motion.div>
     </div>
   )
 }
-
-export default MagicMoveWord

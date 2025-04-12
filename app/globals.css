@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  --font-family-base:
+    system-ui, -apple-system, blinkmacsystemfont, ui-sans-serif, 'Apple SD Gothic Neo', 'Apple Color Emoji', 'SF Pro',
+    'Segoe UI', roboto, oxygen-sans, ubuntu, cantarell, 'Helvetica Neue', sans-serif !important;
+  --font-family-monospace: 'Goorm Sans Code', ui-monospace, 'SF Mono',
+    sfmono-regular, menlo, consolas, monospace;
+  --font-family-sans-serif: var(--font-family-base);
+  --font-family-headline: var(--font-family-base);
+  --font-family-monospace: var(--font-family-monospace);
+  word-wrap: break-word;
+  word-break: keep-all;
+  font-family: var(--font-family-sans-serif);
+  color-scheme: dark light;
+  font-feature-settings:
+    'rlig', 'calt', 'case', 'ccmp', 'dlig', 'salt', 'tnum', 'zero', 'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08',
+    'ss15';
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,150 +84,90 @@
 
 /* Highlight Variants */
 .highlight-1 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
   border-radius: 0.8em 0.3em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(255, 225, 0, 0.1),
-    rgba(255, 225, 0, 0.7) 4%,
-    rgba(255, 225, 0, 0.3)
+    rgba(255, 225, 0, 0.05),
+    rgba(255, 225, 0, 0.3) 4%,
+    rgba(255, 225, 0, 0.1)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .highlight-2 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
   border-radius: 0.5em 0.8em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(255, 170, 0, 0.1),
-    rgba(255, 170, 0, 0.6) 8%,
-    rgba(255, 170, 0, 0.2)
+    rgba(255, 170, 0, 0.05),
+    rgba(255, 170, 0, 0.25) 8%,
+    rgba(255, 170, 0, 0.1)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .highlight-3 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.3em 0.6em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
+  border-radius: 0.7em 0.2em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(255, 196, 0, 0.2),
-    rgba(255, 196, 0, 0.5) 6%,
-    rgba(255, 196, 0, 0.4)
+    rgba(144, 238, 144, 0.08),
+    rgba(144, 238, 144, 0.25) 5%,
+    rgba(144, 238, 144, 0.12)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .highlight-4 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.7em 0.2em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
+  border-radius: 0.4em 0.7em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(144, 238, 144, 0.2),
-    rgba(144, 238, 144, 0.6) 5%,
-    rgba(144, 238, 144, 0.3)
+    rgba(173, 216, 230, 0.08),
+    rgba(173, 216, 230, 0.3) 7%,
+    rgba(173, 216, 230, 0.12)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .highlight-5 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.4em 0.7em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
+  border-radius: 0.6em 0.4em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(173, 216, 230, 0.2),
-    rgba(173, 216, 230, 0.7) 7%,
-    rgba(173, 216, 230, 0.3)
+    rgba(255, 182, 193, 0.05),
+    rgba(255, 182, 193, 0.2) 3%,
+    rgba(255, 182, 193, 0.08)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 .highlight-6 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.6em 0.4em;
-  background: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 182, 193, 0.1),
-    rgba(255, 182, 193, 0.5) 3%,
-    rgba(255, 182, 193, 0.2)
-  );
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.highlight-7 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
+  margin: 0 -0.3em;
+  padding: 0.05em 0.5em;
   border-radius: 0.2em 0.9em;
   background: transparent;
   background-image: linear-gradient(
     to right,
-    rgba(221, 160, 221, 0.2),
-    rgba(221, 160, 221, 0.6) 9%,
-    rgba(221, 160, 221, 0.3)
-  );
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.highlight-8 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.9em 0.5em;
-  background: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 228, 196, 0.2),
-    rgba(255, 228, 196, 0.8) 5%,
-    rgba(255, 228, 196, 0.4)
-  );
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.highlight-9 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.5em 0.5em;
-  background: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgba(240, 230, 140, 0.1),
-    rgba(240, 230, 140, 0.6) 4%,
-    rgba(240, 230, 140, 0.2)
-  );
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-.highlight-10 {
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em;
-  border-radius: 0.4em 0.4em;
-  background: transparent;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 218, 185, 0.2),
-    rgba(255, 218, 185, 0.7) 6%,
-    rgba(255, 218, 185, 0.3)
+    rgba(221, 160, 221, 0.08),
+    rgba(221, 160, 221, 0.25) 9%,
+    rgba(221, 160, 221, 0.12)
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
