@@ -77,8 +77,11 @@
 }
 
 .bg-dotted-pattern {
-  background-color: #f8fafc;
-  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-color: hsl(var(--background));
+  background-image: radial-gradient(
+    hsl(var(--muted-foreground) / 0.5) 1px,
+    transparent 1px
+  );
   background-size: 12px 12px;
 }
 

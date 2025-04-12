@@ -1,5 +1,7 @@
 'use client'
 
+import BeepingDot from '@/components/beeping-dot'
+import { Card } from '@/components/ui/card'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 
@@ -10,21 +12,15 @@ interface MagicMoveWordProps {
 
 type MappedChar = {
   char: string
-  scrambledIndex: number | null // Where this char is in the scrambled word (if it existed)
-  correctIndex: number | null // Where this char is in the correct word (if it exists)
+  scrambledIndex: number | null
+  correctIndex: number | null
 }
 
-/**
- * Build a list of all characters that appear in the scrambled or correct words,
- * matching them where possible. If a char does not match, it becomes "extra" or "new".
- */
 function buildMapping(scrambled: string, correct: string): MappedChar[] {
   const sArr = scrambled.split('')
   const cArr = correct.split('')
 
-  // Keep track of which correct positions have been used
   const used = new Set<number>()
-
   const result: MappedChar[] = []
 
   // 1) Match each scrambled char to the first unused identical char in correct
@@ -81,7 +77,7 @@ export default function MagicMoveWord({
 
   // Basic letter styling
   const letterWidth = 20
-  const letterSpacing = 5
+  const letterSpacing = 2
 
   // Calculate *separate* widths
   const scrambledWidth = scrambledWord.length * (letterWidth + letterSpacing)
@@ -95,16 +91,14 @@ export default function MagicMoveWord({
   }
 
   return (
-    <div
-      className='inline-flex items-center justify-center bg-gray-50 rounded p-2 relative cursor-pointer select-none'
+    <Card
+      className='inline-flex items-center justify-center p-2 relative cursor-pointer select-none'
       style={{ width: '100%', height: 60 }}
       onClick={handleClick}
       onKeyUp={handleClick}
     >
       {/* Pulsing red dot if not opened */}
-      {!hasBeenOpened && (
-        <span className='absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse' />
-      )}
+      <BeepingDot visible={!hasBeenOpened} />
 
       {/* 
           Instead of a static width, we animate from the scrambled width
@@ -140,7 +134,7 @@ export default function MagicMoveWord({
           return (
             <motion.div
               key={`${index}-${char}`}
-              className='absolute flex items-center justify-center text-lg font-medium'
+              className='absolute flex items-center justify-center text-lg font-medium text-gray-800 dark:text-gray-200 text-xl'
               style={{
                 top: '50%',
                 left: fromX,
@@ -148,7 +142,6 @@ export default function MagicMoveWord({
                 height: 30,
                 marginTop: -15,
                 borderRadius: 4,
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
               }}
               initial={
                 isNew
@@ -179,6 +172,6 @@ export default function MagicMoveWord({
           )
         })}
       </motion.div>
-    </div>
+    </Card>
   )
 }
