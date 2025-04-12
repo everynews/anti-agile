@@ -623,9 +623,10 @@ export default function LetterPage() {
                 it to the next candidate.
               </li>
               <li>
-                <strong>I will give more back to the community.</strong>
+                <strong>I will give more back to the community.</strong>{' '}
                 <Link
                   href='https://github.com/anaclumos?tab=sponsoring'
+                  className='inline-flex items-center text-blue-500'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
