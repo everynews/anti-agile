@@ -29,7 +29,6 @@ const HighlightPopover = ({
   triggerContent,
   popoverTitle,
   popoverContent,
-  width = 'w-64',
   direction = 'bottom',
 }: HighlightPopoverProps) => {
   const highlightClass = useMemo(() => {
@@ -54,9 +53,8 @@ const HighlightPopover = ({
       >
         {triggerContent}
       </PopoverTrigger>
-      <PopoverContent className={`${width} z-50`} side={direction}>
+      <PopoverContent className='w-96' side={direction}>
         <div className='space-y-2'>
-          {/* popoverTitle switch as string or ReactNode */}
           {popoverTitle &&
             (typeof popoverTitle === 'string' ? (
               <h4 className='text-lg font-bold'>{popoverTitle}</h4>
