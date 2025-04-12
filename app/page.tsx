@@ -195,6 +195,10 @@ export default function LetterPage() {
               />
             </li>
           </ul>
+
+          <p className='text-xs text-muted-foreground'>
+            Work in progress!! Please check back in 2 hours!!!!!
+          </p>
         </CardContent>
       </Card>
     </div>
