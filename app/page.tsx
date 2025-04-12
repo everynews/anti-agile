@@ -6,6 +6,8 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { TranslatingQuote } from '@/components/translating-quote'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import Video from 'next-video';
+import SlidingPanes from '@/videos/sliding-panes.mp4';
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -600,8 +602,19 @@ export default function LetterPage() {
                 had to navigate them quickly, and eventually I created this
                 spacial cognitive design. I think Vercel will like my work in
                 the end.
+
               </li>
             </ul>
+              <Card className='overflow-hidden max-w-md w-full mx-auto'>
+                <div className="relative aspect-video">
+                <Video src={SlidingPanes} />
+                </div>
+                <CardContent className='py-2'>
+                  <p className='text-sm text-muted-foreground text-center'>
+                    Directory navigation demo from my internal web app
+                  </p>
+                </CardContent>
+              </Card>
           </p>
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
