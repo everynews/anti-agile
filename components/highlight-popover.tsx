@@ -2,6 +2,7 @@
 
 import { type ReactNode, useMemo } from 'react'
 
+import { cn } from '@/lib/utils'
 import {
   Popover,
   PopoverContent,
@@ -48,7 +49,7 @@ export const HighlightPopover = ({
   return (
     <Popover>
       <PopoverTrigger
-        className={`cursor-pointer inline-block relative ${highlightClass}`}
+        className={cn('cursor-pointer inline-block relative', highlightClass)}
         type='button'
       >
         {triggerContent}
