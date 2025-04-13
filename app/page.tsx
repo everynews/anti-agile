@@ -1,5 +1,3 @@
-'use client'
-
 import HighlightPopover from '@/components/highlight-popover'
 import MagicMoveWord from '@/components/magic-move-word'
 import { ThemeToggle } from '@/components/theme-toggle'
