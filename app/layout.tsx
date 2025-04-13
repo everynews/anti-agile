@@ -9,8 +9,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Letter Page',
-  description: 'A beautiful letter page with a scrollable card',
+  title: "Dear Vercel, I'll quit being Anti-Agile",
+  description: "An interactive essay on why I'll quit being Anti-Agile",
   generator: 'v0.dev',
 }
 

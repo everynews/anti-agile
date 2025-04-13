@@ -1,12 +1,12 @@
-import { HighlightPopover } from '@/components/highlight-popover'
-import { MagicMoveWord } from '@/components/magic-move-word'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { TranslatingQuote } from '@/components/translating-quote'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+'use client'
+
 import { ActionButton } from '@/components/action-button'
 import { FavoriteButton } from '@/components/favorite-button'
+import { HighlightPopover } from '@/components/highlight-popover'
+import { MagicMoveWord } from '@/components/magic-move-word'
 import { RefreshButton } from '@/components/refresh-button'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { TranslatingQuote } from '@/components/translating-quote'
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -22,11 +22,13 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 import { Separator } from '@/components/ui/separator'
+import { YouTubeEmbed } from '@/components/youtube-embed'
 import { TrendingUp } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { Bar, BarChart, XAxis, YAxis } from 'recharts'
 
 const dancingScript = Dancing_Script({
@@ -34,10 +36,7 @@ const dancingScript = Dancing_Script({
   weight: ['700'],
 })
 
-export const metadata: Metadata = {
-  title: "Dear Vercel, I'll quit being Anti-Agile",
-  description: "An interactive essay on why I'll quit being Anti-Agile",
-}
+// Move metadata to layout.tsx for server component support
 
 export default function Page() {
   return (
@@ -75,10 +74,12 @@ export default function Page() {
           </p>
 
           <div className='flex justify-center w-full'>
-            <MagicMoveWord
-              scrambledWord='I was, antifragile'
-              correctWord='I was anti-agile, fr'
-            />
+            <Suspense fallback={<div>Loading word animation...</div>}>
+              <MagicMoveWord
+                scrambledWord='I was, antifragile'
+                correctWord='I was anti-agile, fr'
+              />
+            </Suspense>
           </div>
 
           <p>
@@ -291,20 +292,22 @@ export default function Page() {
             extension, and by pure word of mouth, people flocked in. From Italy
             to China, not to mention my home ground, Korea and the US.
           </p>
-          <TranslatingQuote
-            quotes={[
-              {
-                text: "La prima volta che ho visitato il sito, ho avuto la sorprendente sensazione di essere catapultato in quel tipo di futuro che ho sempre sognato ma che non ho mai visto realizzato. Ti ringrazio per offrire quest'esperienza così straordinaria!",
-                author: 'Alessio',
-                language: 'it-IT',
-              },
-              {
-                text: "The first time I visited the site, I had the surprising feeling of being catapulted into that kind of future I've always dreamed of but never seen realized. Thank you for offering such an amazing experience!",
-                author: 'Alessio, one of our first Italian subscribers',
-                language: 'en-US',
-              },
-            ]}
-          />
+          <Suspense fallback={<div>Loading quote translation...</div>}>
+            <TranslatingQuote
+              quotes={[
+                {
+                  text: "La prima volta che ho visitato il sito, ho avuto la sorprendente sensazione di essere catapultato in quel tipo di futuro che ho sempre sognato ma che non ho mai visto realizzato. Ti ringrazio per offrire quest'esperienza così straordinaria!",
+                  author: 'Alessio',
+                  language: 'it-IT',
+                },
+                {
+                  text: "The first time I visited the site, I had the surprising feeling of being catapulted into that kind of future I've always dreamed of but never seen realized. Thank you for offering such an amazing experience!",
+                  author: 'Alessio, one of our first Italian subscribers',
+                  language: 'en-US',
+                },
+              ]}
+            />
+          </Suspense>
           <p>
             To this day, I have gathered 2K daily readers and sent 1M emails so
             far. Every day, the open rate was consistently{' '}
@@ -349,63 +352,65 @@ export default function Page() {
                         },
                       }}
                     >
-                      <BarChart
-                        data={[
-                          {
-                            label: 'Mine',
-                            openRate: 80,
-                            clickRate: 20,
-                            fill: 'hsl(var(--chart-1))',
-                          },
-                          {
-                            label: 'Superb',
-                            openRate: 50,
-                            clickRate: 10,
-                            fill: 'hsl(var(--chart-2))',
-                          },
-                          {
-                            label: 'Decent',
-                            openRate: 20,
-                            clickRate: 4,
-                            fill: 'hsl(var(--chart-3))',
-                          },
-                          {
-                            label: 'Average',
-                            openRate: 15,
-                            clickRate: 2,
-                            fill: 'hsl(var(--chart-4))',
-                          },
-                        ]}
-                        layout='vertical'
-                        margin={{
-                          left: 0,
-                        }}
-                      >
-                        <YAxis
-                          dataKey='label'
-                          type='category'
-                          tickLine={false}
-                          tickMargin={10}
-                          axisLine={false}
-                        />
-                        <XAxis dataKey='openRate' type='number' hide />
-                        <ChartTooltip
-                          cursor={false}
-                          content={<ChartTooltipContent hideLabel />}
-                        />
-                        <Bar
-                          dataKey='openRate'
+                      <Suspense fallback={<div>Loading chart...</div>}>
+                        <BarChart
+                          data={[
+                            {
+                              label: 'Mine',
+                              openRate: 80,
+                              clickRate: 20,
+                              fill: 'hsl(var(--chart-1))',
+                            },
+                            {
+                              label: 'Superb',
+                              openRate: 50,
+                              clickRate: 10,
+                              fill: 'hsl(var(--chart-2))',
+                            },
+                            {
+                              label: 'Decent',
+                              openRate: 20,
+                              clickRate: 4,
+                              fill: 'hsl(var(--chart-3))',
+                            },
+                            {
+                              label: 'Average',
+                              openRate: 15,
+                              clickRate: 2,
+                              fill: 'hsl(var(--chart-4))',
+                            },
+                          ]}
                           layout='vertical'
-                          radius={5}
-                          fill='hsl(var(--chart-1))'
-                        />
-                        <Bar
-                          dataKey='clickRate'
-                          layout='vertical'
-                          radius={5}
-                          fill='hsl(var(--chart-5))'
-                        />
-                      </BarChart>
+                          margin={{
+                            left: 0,
+                          }}
+                        >
+                          <YAxis
+                            dataKey='label'
+                            type='category'
+                            tickLine={false}
+                            tickMargin={10}
+                            axisLine={false}
+                          />
+                          <XAxis dataKey='openRate' type='number' hide />
+                          <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Bar
+                            dataKey='openRate'
+                            layout='vertical'
+                            radius={5}
+                            fill='hsl(var(--chart-1))'
+                          />
+                          <Bar
+                            dataKey='clickRate'
+                            layout='vertical'
+                            radius={5}
+                            fill='hsl(var(--chart-5))'
+                          />
+                        </BarChart>
+                      </Suspense>
                     </ChartContainer>
                   </CardContent>
                   <CardFooter className='flex-col items-start gap-2 text-sm'>
@@ -424,16 +429,16 @@ export default function Page() {
               }
             />
             —something almost unheard of in the newsletter business.
-            <div className='my-4 flex justify-center'>
-              <Image
-                src='/subscriber-count.png'
-                alt='Subscriber count statistics'
-                width={600}
-                height={400}
-                className='rounded-lg shadow-md'
-              />
-            </div>
           </p>
+          <div className='my-4 flex justify-center'>
+            <Image
+              src='/subscriber-count.png'
+              alt='Subscriber count statistics'
+              width={600}
+              height={400}
+              className='rounded-lg shadow-md'
+            />
+          </div>
 
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
@@ -452,12 +457,14 @@ export default function Page() {
             things were all smooth sailing.
           </p>
           <Card className='overflow-hidden  w-full mx-auto'>
-            <LiteYouTubeEmbed
-              aspectHeight={9}
-              aspectWidth={16}
-              id='FtvdWGoLtV0'
-              title='MVP'
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <YouTubeEmbed
+                aspectHeight={9}
+                aspectWidth={16}
+                id='FtvdWGoLtV0'
+                title='MVP'
+              />
+            </Suspense>
             <CardContent className='py-2'>
               <p className='text-sm text-muted-foreground text-center'>
                 Demo of the MVP version showcased at the hackathon
@@ -583,96 +590,99 @@ export default function Page() {
           >
             I am going to bootstrap this anyways.
           </h2>
-          <p>
-            But here's how Vercel OSS program can help.
-            <ul className='list-disc pl-6 space-y-2 mt-2'>
-              <li>
-                Based on my previous philosophies, I want to keep this available
-                to as many people as possible. In the v1 version, most of the
-                costs came from avid users in developing regions, such as South
-                East Asia or Africa. They loved the product because they could
-                follow Silicon Valley news at near-identical speed as San
-                Franciscans. The reader base is small but cost me a good chunk
-                of token money, which made me consider dropping support.
-                However, I remain committed to making this as i18n-native as
-                possible.
-              </li>
-              <li>
-                I know and use the latest bleeding-edge technology, such as RSC,
-                to build this. While I cannot disclose the source code internal
-                web app that I built for my company, it loads 50M datapoints in
-                less than a second. I doubled down on understanding how Next.js
-                caching works and eventually led a whole project to build a
-                caching layer for the internal web app. While there are news
-                outlets that use Next.js, I can promise no single company will
-                know Next.js App Router Cachings and PPRs better than me.
-              </li>
-              <li>
-                I care about pixel-perfect and satisfying interfaces and
-                innovative UI/UX. I want to accelerate my ideation and
-                prototyping process, and give great examples of how to do it.
-                Here's a small demo of directory navigation in my company's
-                internal web app I built. We had bunch of nested layers and we
-                had to navigate them quickly, and eventually I created this
-                spacial cognitive design. I think Vercel will like my work in
-                the end.
-              </li>
-            </ul>
+          <p>But here's how Vercel OSS program can help.</p>
+          <ul className='list-disc pl-6 space-y-2 mt-2'>
+            <li>
+              Based on my previous philosophies, I want to keep this available
+              to as many people as possible. In the v1 version, most of the
+              costs came from avid users in developing regions, such as South
+              East Asia or Africa. They loved the product because they could
+              follow Silicon Valley news at near-identical speed as San
+              Franciscans. The reader base is small but cost me a good chunk of
+              token money, which made me consider dropping support. However, I
+              remain committed to making this as i18n-native as possible.
+            </li>
+            <li>
+              I know and use the latest bleeding-edge technology, such as RSC,
+              to build this. While I cannot disclose the source code internal
+              web app that I built for my company, it loads 50M datapoints in
+              less than a second. I doubled down on understanding how Next.js
+              caching works and eventually led a whole project to build a
+              caching layer for the internal web app. While there are news
+              outlets that use Next.js, I can promise no single company will
+              know Next.js App Router Cachings and PPRs better than me.
+            </li>
+            <li>
+              I care about pixel-perfect and satisfying interfaces and
+              innovative UI/UX. I want to accelerate my ideation and prototyping
+              process, and give great examples of how to do it. Here's a small
+              demo of directory navigation in my company's internal web app I
+              built. We had bunch of nested layers and we had to navigate them
+              quickly, and eventually I created this spacial cognitive design. I
+              think Vercel will like my work in the end.
+            </li>
+          </ul>
+          <Suspense fallback={<div>Loading actions...</div>}>
             <ActionButton />
+          </Suspense>
+          <Suspense fallback={<div>Loading favorites...</div>}>
             <FavoriteButton />
+          </Suspense>
+          <Suspense fallback={<div>Loading refresh...</div>}>
             <RefreshButton />
-            <Card className='overflow-hidden  w-full mx-auto'>
-              <div className='relative aspect-video'>
-                <Image
-                  src='/gifs/sliding-panes.gif'
-                  width={480}
-                  height={301}
-                  alt='Sliding panes demonstration'
-                />
-              </div>
-              <CardContent className='py-2'>
-                <p className='text-sm text-muted-foreground text-center'>
-                  Directory navigation demo from my internal web app
-                </p>
-              </CardContent>
-            </Card>
-          </p>
+          </Suspense>
+          <Card className='overflow-hidden  w-full mx-auto'>
+            <div className='relative aspect-video'>
+              <Image
+                unoptimized
+                src='/gifs/sliding-panes.gif'
+                width={480}
+                height={301}
+                alt='Sliding panes demonstration'
+              />
+            </div>
+            <CardContent className='py-2'>
+              <p className='text-sm text-muted-foreground text-center'>
+                Directory navigation demo from my internal web app
+              </p>
+            </CardContent>
+          </Card>
+
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
           >
             So here's the deal.
           </h2>
-          <p>
-            <ul className='list-disc pl-6 space-y-2 mt-2'>
-              <li>
-                <strong>
-                  I will finish building this by May 6th, and let people sign
-                  up.
-                </strong>
-                I understand you'd be concerned that I previously did not build
-                the app after winning a hackathon. But now I have better
-                understanding around everything and more importantly, I have
-                better self-discipline. Therefore, if I do not finish building
-                the app by the end of May 6th, I will refund your money and pass
-                it to the next candidate.
-              </li>
-              <li>
-                <strong>I will give more back to the community.</strong>{' '}
-                <Link
-                  href='https://github.com/anaclumos?tab=sponsoring'
-                  className='inline-flex items-center text-blue-500'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  I already sponsor more open-source projects than many of the
-                  companies
-                </Link>
-                , only because I think they're cool. If you sponsor me with this
-                project, I will double down and even expand my current GitHub
-                Sponsor & new dependencies.
-              </li>
-            </ul>
-          </p>
+
+          <ul className='list-disc pl-6 space-y-2 mt-2'>
+            <li>
+              <strong>
+                I will finish building this by May 6th, and let people sign up.
+              </strong>
+              I understand you'd be concerned that I previously did not build
+              the app after winning a hackathon. But now I have better
+              understanding around everything and more importantly, I have
+              better self-discipline. Therefore, if I do not finish building the
+              app by the end of May 6th, I will refund your money and pass it to
+              the next candidate.
+            </li>
+            <li>
+              <strong>I will give more back to the community.</strong>{' '}
+              <Link
+                href='https://github.com/anaclumos?tab=sponsoring'
+                className='inline-flex items-center text-blue-500'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                I already sponsor more open-source projects than many of the
+                companies
+              </Link>
+              , only because I think they're cool. If you sponsor me with this
+              project, I will double down and even expand my current GitHub
+              Sponsor & new dependencies.
+            </li>
+          </ul>
+
           <p>
             I totally understand I am in a unique position that makes it hard
             for Vercel to support me. I totally understand that. This is more of
