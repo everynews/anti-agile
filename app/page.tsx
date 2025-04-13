@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function LetterPage() {
   return (
-    <div className='min-h-screen w-full flex items-start justify-center p-4 md:p-8 bg-dotted-pattern bg-fixed leading-8'>
+    <article className='min-h-screen w-full flex items-start justify-center p-4 md:p-8 bg-dotted-pattern bg-fixed leading-8'>
       <Card className='w-full max-w-3xl shadow-lg my-8'>
         <CardHeader>
           <CardTitle className='w-full flex items-center justify-between align-top'>
@@ -681,6 +681,6 @@ export default function LetterPage() {
           </h2>
         </CardContent>
       </Card>
-    </div>
+    </article>
   )
 }
