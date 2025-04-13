@@ -34,22 +34,25 @@ export const FavoriteButton = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            className='relative rounded-none bg-background text-muted-foreground'
             disabled={isPinging}
             onClick={handleClick}
             size='icon'
-            variant='ghost'
+            variant='outline'
           >
             <span className='relative inline-flex size-4 items-center justify-center'>
-              {isPinging && (
-                <span className='absolute inline-flex size-full animate-ping rounded-full bg-red-400 opacity-75' />
-              )}
+              <span className={cn(
+                'absolute inline-flex size-full rounded-full bg-red-400 transition-opacity duration-300 ease-in-out',
+                isPinging ? 'animate-ping opacity-75' : 'opacity-0'
+              )} />
               <HeartIcon
                 className={cn(
-                  'size-4',
+                  'size-4 transition-colors transition-[fill] duration-300 ease-in-out',
                   isFavorite ? 'text-red-500' : 'text-muted-foreground',
                 )}
-                fill={isFavorite ? 'currentColor' : 'none'}
+                style={{
+                  fill: isFavorite ? 'currentColor' : 'none',
+                  transition: 'fill 300ms ease-in-out, color 300ms ease-in-out'
+                }}
               />
             </span>
             <span className='sr-only'>Favorite</span>

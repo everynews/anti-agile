@@ -24,7 +24,6 @@ import {
 import { Separator } from '@/components/ui/separator'
 import { YouTubeEmbed } from '@/components/youtube-embed'
 import { TrendingUp } from 'lucide-react'
-import type { Metadata } from 'next'
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -57,20 +56,9 @@ export default function Page() {
         </CardHeader>
         <CardContent className='space-y-6'>
           <p>
-            A lot of indiepreneurs and founders tout the importance of being{' '}
-            <HighlightPopover
-              triggerContent='antifragile'
-              popoverTitle='Antifragility'
-              popoverContent={
-                <p className='text-muted-foreground'>
-                  Antifragility is the idea that you can thrive in adversity and
-                  grow stronger from challenges. Turning the tides, extracting
-                  opportunity from danger.
-                </p>
-              }
-            />
-            . I did quite the opposite. I turned a great opportunity into a
-            lagging product. In a way, I <i>flipped</i> the order.
+            A lot of indiepreneurs and founders tout the importance of being
+            anti-fragile. I did quite the opposite. I turned a great opportunity
+            into a lagging product. In a way, I <i>flipped</i> the order.
           </p>
 
           <div className='flex justify-center w-full'>
@@ -631,14 +619,15 @@ export default function Page() {
           <Suspense fallback={<div>Loading refresh...</div>}>
             <RefreshButton />
           </Suspense>
-          <Card className='overflow-hidden  w-full mx-auto'>
-            <div className='relative aspect-video'>
+          <Card className='overflow-hidden w-full mx-auto'>
+            <div className='relative'>
               <Image
                 unoptimized
                 src='/gifs/sliding-panes.gif'
                 width={480}
                 height={301}
                 alt='Sliding panes demonstration'
+                className='w-full'
               />
             </div>
             <CardContent className='py-2'>

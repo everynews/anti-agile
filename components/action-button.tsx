@@ -2,6 +2,7 @@
 
 import { MetaKeyIcon } from '@/components/meta-key'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { CornerDownLeftIcon, LoaderCircle } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -42,21 +43,23 @@ export const ActionButton = () => {
       onClick={triggerAction}
     >
       <div
-        className={`flex items-center justify-between gap-2 transition-opacity duration-200 ${
+        className={cn(
+          'flex items-center justify-between gap-2 transition-opacity duration-300 ease-in-out',
           isSubmitting ? 'opacity-0' : 'opacity-100'
-        }`}
+        )}
       >
         Action
-        <kbd className='flex items-center justify-center'>
-          <MetaKeyIcon className='size-3' />
-          <CornerDownLeftIcon className='size-3' />
+        <kbd className='flex items-center justify-center gap-0.5'>
+          <MetaKeyIcon className='my-auto' />
+          <CornerDownLeftIcon className='my-auto' />
         </kbd>
       </div>
-      {isSubmitting && (
-        <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
-          <LoaderCircle className='size-4 animate-spin' />
-        </div>
-      )}
+      <div className={cn(
+        'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ease-in-out',
+        isSubmitting ? 'opacity-100' : 'opacity-0'
+      )}>
+        <LoaderCircle className='size-4 animate-spin' />
+      </div>
     </Button>
   )
 }

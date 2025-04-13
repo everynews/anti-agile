@@ -2,12 +2,12 @@
 
 import { type ReactNode, useMemo } from 'react'
 
-import { cn } from '@/lib/utils'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
 
 interface HighlightPopoverProps {
   triggerContent: ReactNode

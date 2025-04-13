@@ -37,10 +37,6 @@ export const RefreshButton = () => {
     return () => clearTimeout(timeoutId)
   }, [isRefreshing, isClient])
 
-  useEffect(() => {
-    if (!isClient || !isRefreshing) return
-    window.dispatchEvent(new Event('resize'))
-  }, [isRefreshing, isClient])
 
   const handleRefresh = () => {
     if (!isRefreshing) {
@@ -65,15 +61,11 @@ export const RefreshButton = () => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button
-            {...baseButtonProps}
-            className={baseButtonProps.className}
-            disabled={isRefreshing}
-          >
+          <Button {...baseButtonProps}>
             <span className='relative inline-flex h-4 w-4 items-center justify-center'>
               <div
                 className={cn(
-                  'absolute inset-0 flex items-center justify-center transition-transform duration-300',
+                  'absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out',
                   showCheckmark ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
                 )}
               >
@@ -81,14 +73,14 @@ export const RefreshButton = () => {
               </div>
               <div
                 className={cn(
-                  'absolute inset-0 flex items-center justify-center transition-transform duration-300',
+                  'absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out',
                   showCheckmark ? 'scale-0 opacity-0' : 'scale-100 opacity-100',
                 )}
               >
                 <RefreshCw
                   className={cn(
-                    'size-3.5',
-                    isSpinning && 'animate-spin-accelerate',
+                    'size-3.5 transition-opacity duration-300 ease-in-out',
+                    isSpinning ? 'animate-spin-accelerate opacity-100' : 'opacity-75'
                   )}
                 />
               </div>
