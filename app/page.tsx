@@ -23,6 +23,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 import SlidingPanes from '@/videos/sliding-panes.mp4'
 import { TrendingUp } from 'lucide-react'
+import type { Metadata } from 'next'
 import Video from 'next-video'
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
@@ -33,6 +34,12 @@ const dancingScript = Dancing_Script({
   subsets: ['latin'],
   weight: ['700'],
 })
+
+export const metadata: Metadata = {
+  title: "Dear Vercel, I'll quit being Anti-Agile",
+  description:
+    "A heartfelt letter to Vercel, explaining why I'll quit being Anti-Agile",
+}
 
 export default function LetterPage() {
   return (
@@ -419,6 +426,15 @@ export default function LetterPage() {
               }
             />
             —something almost unheard of in the newsletter business.
+            <div className='my-4 flex justify-center'>
+              <Image
+                src='/subscriber-count.png'
+                alt='Subscriber count statistics'
+                width={600}
+                height={400}
+                className='rounded-lg shadow-md'
+              />
+            </div>
           </p>
 
           <h2
