@@ -21,5 +21,3 @@ export const BeepingDot: FC<BeepingDotProps> = ({
     />
   )
 }
-
-export default BeepingDot

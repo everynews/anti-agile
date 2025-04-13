@@ -1,8 +1,8 @@
 'use client'
 
-import BeepingDot from '@/components/beeping-dot'
+import { BeepingDot } from '@/components/beeping-dot'
 import { Card } from '@/components/ui/card'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 interface QuoteTranslatorProps {

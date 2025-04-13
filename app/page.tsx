@@ -1,9 +1,12 @@
-import HighlightPopover from '@/components/highlight-popover'
-import MagicMoveWord from '@/components/magic-move-word'
+import { HighlightPopover } from '@/components/highlight-popover'
+import { MagicMoveWord } from '@/components/magic-move-word'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { TranslatingQuote } from '@/components/translating-quote'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import { ActionButton } from '@/components/action-button'
+import { FavoriteButton } from '@/components/favorite-button'
+import { RefreshButton } from '@/components/refresh-button'
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -19,10 +22,8 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 import { Separator } from '@/components/ui/separator'
-import SlidingPanes from '@/videos/sliding-panes.mp4'
 import { TrendingUp } from 'lucide-react'
 import type { Metadata } from 'next'
-import Video from 'next-video'
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -35,11 +36,10 @@ const dancingScript = Dancing_Script({
 
 export const metadata: Metadata = {
   title: "Dear Vercel, I'll quit being Anti-Agile",
-  description:
-    "An interactive essay on why I'll quit being Anti-Agile",
+  description: "An interactive essay on why I'll quit being Anti-Agile",
 }
 
-export default function LetterPage() {
+export default function Page() {
   return (
     <article className='min-h-screen w-full flex items-start justify-center p-4 md:p-8 bg-dotted-pattern bg-fixed leading-8'>
       <Card className='w-full max-w-3xl shadow-lg my-8'>
@@ -618,9 +618,17 @@ export default function LetterPage() {
                 the end.
               </li>
             </ul>
+            <ActionButton />
+            <FavoriteButton />
+            <RefreshButton />
             <Card className='overflow-hidden  w-full mx-auto'>
               <div className='relative aspect-video'>
-                <Video src={SlidingPanes} />
+                <Image
+                  src='/gifs/sliding-panes.gif'
+                  width={480}
+                  height={301}
+                  alt='Sliding panes demonstration'
+                />
               </div>
               <CardContent className='py-2'>
                 <p className='text-sm text-muted-foreground text-center'>

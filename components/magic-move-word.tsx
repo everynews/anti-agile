@@ -1,9 +1,9 @@
 'use client'
 
-import BeepingDot from '@/components/beeping-dot'
+import { BeepingDot } from '@/components/beeping-dot'
 import { Card } from '@/components/ui/card'
 import { motion } from 'motion/react'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 
 interface MagicMoveWordProps {
   scrambledWord: string
@@ -65,10 +65,10 @@ function buildMapping(scrambled: string, correct: string): MappedChar[] {
   return result
 }
 
-export default function MagicMoveWord({
+export const MagicMoveWord: FC<MagicMoveWordProps> = ({
   scrambledWord,
   correctWord,
-}: MagicMoveWordProps) {
+}) => {
   const [isScrambled, setIsScrambled] = useState(true)
   const [hasBeenOpened, setHasBeenOpened] = useState(false)
 

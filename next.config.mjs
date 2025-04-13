@@ -1,4 +1,4 @@
-import { withNextVideo } from 'next-video/process'
+// Video configuration removed
 let userConfig = undefined
 try {
   // try to import ESM first
@@ -49,4 +49,4 @@ if (userConfig) {
   }
 }
 
-export default withNextVideo(nextConfig)
+export default nextConfig

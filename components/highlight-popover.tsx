@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, useEffect, useMemo, useState } from 'react'
+import { type ReactNode, useMemo } from 'react'
 
 import {
   Popover,
@@ -25,7 +25,7 @@ const highlightClasses = [
   'highlight-6',
 ]
 
-const HighlightPopover = ({
+export const HighlightPopover = ({
   triggerContent,
   popoverTitle,
   popoverContent,
@@ -67,5 +67,3 @@ const HighlightPopover = ({
     </Popover>
   )
 }
-
-export default HighlightPopover
