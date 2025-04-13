@@ -38,7 +38,7 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: "Dear Vercel, I'll quit being Anti-Agile",
   description:
-    "A heartfelt letter to Vercel, explaining why I'll quit being Anti-Agile",
+    "An interactive essay on why I'll quit being Anti-Agile",
 }
 
 export default function LetterPage() {
