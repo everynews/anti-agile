@@ -37,7 +37,6 @@ export const RefreshButton = () => {
     return () => clearTimeout(timeoutId)
   }, [isRefreshing, isClient])
 
-
   const handleRefresh = () => {
     if (!isRefreshing) {
       setIsRefreshing(true)
@@ -54,7 +53,10 @@ export const RefreshButton = () => {
     disabled: isRefreshing,
     onClick: handleRefresh,
     size: 'icon' as const,
-    className: cn('overflow-hidden hover:bg-muted'),
+    className: cn(
+      'overflow-hidden transition-colors duration-300 cursor-pointer',
+      showCheckmark ? 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-950 dark:hover:bg-blue-900 border-blue-400 dark:border-blue-600' : 'hover:bg-muted'
+    ),
   }
 
   return (
@@ -69,7 +71,7 @@ export const RefreshButton = () => {
                   showCheckmark ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
                 )}
               >
-                <Check className='size-3.5' />
+                <Check className='size-3.5 text-blue-500' />
               </div>
               <div
                 className={cn(
@@ -80,7 +82,9 @@ export const RefreshButton = () => {
                 <RefreshCw
                   className={cn(
                     'size-3.5 transition-opacity duration-300 ease-in-out',
-                    isSpinning ? 'animate-spin-accelerate opacity-100' : 'opacity-75'
+                    isSpinning
+                      ? 'animate-spin-accelerate opacity-100'
+                      : 'opacity-75',
                   )}
                 />
               </div>

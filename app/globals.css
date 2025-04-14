@@ -56,7 +56,8 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-in: fade-in 0.1s ease-out, zoom-in 0.1s ease-out;
   --animate-out: fade-out 0.1s ease-in, zoom-out 0.1s ease-in;
-  --animate-spin-accelerate: spin-accelerate 1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  --animate-spin-accelerate: spin-accelerate 1s cubic-bezier(0.25, 0.1, 0.25, 1)
+    infinite;
 
   @keyframes accordion-down {
     from {
@@ -106,7 +107,7 @@
       transform: scale(0.95);
     }
   }
-  
+
   @keyframes spin-accelerate {
     from {
       transform: rotate(0deg);
@@ -222,7 +223,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 
 .bg-dotted-pattern {
   background-color: hsl(var(--background));

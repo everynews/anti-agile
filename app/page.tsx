@@ -598,28 +598,13 @@ export default function Page() {
               caching works and eventually led a whole project to build a
               caching layer for the internal web app. While there are news
               outlets that use Next.js, I can promise no single company will
-              know Next.js App Router Cachings and PPRs better than me.
-            </li>
-            <li>
-              I care about pixel-perfect and satisfying interfaces and
-              innovative UI/UX. I want to accelerate my ideation and prototyping
-              process, and give great examples of how to do it. Here's a small
+              know Next.js App Router Cachings and PPRs better than me. Here's a small
               demo of directory navigation in my company's internal web app I
               built. We had bunch of nested layers and we had to navigate them
               quickly, and eventually I created this spacial cognitive design. I
               think Vercel will like my work in the end.
             </li>
-          </ul>
-          <Suspense fallback={<div>Loading actions...</div>}>
-            <ActionButton />
-          </Suspense>
-          <Suspense fallback={<div>Loading favorites...</div>}>
-            <FavoriteButton />
-          </Suspense>
-          <Suspense fallback={<div>Loading refresh...</div>}>
-            <RefreshButton />
-          </Suspense>
-          <Card className='overflow-hidden w-full mx-auto'>
+            <Card className='overflow-hidden w-full mx-auto'>
             <div className='relative'>
               <Image
                 unoptimized
@@ -632,11 +617,35 @@ export default function Page() {
             </div>
             <CardContent className='py-2'>
               <p className='text-sm text-muted-foreground text-center'>
-                Directory navigation demo from my internal web app
+                I am particularly proud of this ergonomic navigation + super fast loading.
               </p>
             </CardContent>
           </Card>
+            <li>
+              I care about interactive interfaces and innovative UI/UX. I want to accelerate my ideation and prototyping
+              process, and give great examples of how to do it. Here are some components I built, with ergonomism in mind. 
+            </li>
+          
+          <Card className="w-full max-w-md mx-auto">
+            <CardContent className="flex flex-col items-center space-y-6 py-6">
+              <div className="flex flex-row justify-center gap-4 items-center">
+                <Suspense fallback={<div>Loading actions...</div>}>
+                  <ActionButton />
+                </Suspense>
+                <Suspense fallback={<div>Loading favorites...</div>}>
+                  <FavoriteButton />
+                </Suspense>
+                <Suspense fallback={<div>Loading refresh...</div>}>
+                  <RefreshButton />
+                </Suspense>
+              </div>
 
+              <p className='text-sm text-muted-foreground text-center'>
+                Some of the components I built. Try them out!
+              </p>
+            </CardContent>
+          </Card>
+          </ul>
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
           >
