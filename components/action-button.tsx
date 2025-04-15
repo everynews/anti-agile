@@ -28,8 +28,8 @@ export const ActionButton = () => {
           setShowCheckmark(false)
           setIsSubmitting(false)
           toast.success('Action completed successfully!')
-        }, 3000)
-      }, 3000)
+        }, 2000)
+      }, 1000)
     }
   }
 

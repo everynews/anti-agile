@@ -32,7 +32,7 @@ export const FavoriteButton = () => {
       toast.success(`${isFavorite ? 'Removed from' : 'Added to'} favorites`)
       setIsProcessing(false)
       setIsPinging(false)
-    }, 3000)
+    }, 2000)
   }
 
   return (
@@ -66,7 +66,7 @@ export const FavoriteButton = () => {
                 >
                   <HeartIcon
                     className={cn(
-                      'size-4 transition-colors duration-300 ease-in-out dark:text-red-500',
+                      'size-4 transition-colors duration-300 ease-in-out',
                       isFavorite ? 'text-red-500' : 'text-muted-foreground',
                     )}
                     fill={isFavorite ? 'currentColor' : 'none'}

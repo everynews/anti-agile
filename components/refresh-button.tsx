@@ -44,7 +44,7 @@ export const RefreshButton = () => {
       setTimeout(() => {
         setIsRefreshing(false)
         toast.success('Refreshed successfully!')
-      }, 3000)
+      }, 2000)
     }
   }
 
