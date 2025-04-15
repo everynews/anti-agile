@@ -17,12 +17,12 @@ export const ActionButton = () => {
       setIsSubmitting(true)
       setIsLoading(true)
       setShowCheckmark(false)
-      
+
       // Show loading for 3 seconds
       setTimeout(() => {
         setIsLoading(false)
         setShowCheckmark(true)
-        
+
         // Show checkmark for 3 seconds
         setTimeout(() => {
           setShowCheckmark(false)
@@ -35,10 +35,7 @@ export const ActionButton = () => {
 
   // Simplified keyboard shortcut handling
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (
-      (event.metaKey || event.ctrlKey) &&
-      (event.key === 'Enter')
-    ) {
+    if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
       event.preventDefault()
       triggerAction()
     }
@@ -54,7 +51,9 @@ export const ActionButton = () => {
       variant='outline'
       className={cn(
         'relative transition-colors duration-300 cursor-pointer overflow-hidden',
-        showCheckmark ? 'bg-green-100 hover:bg-green-200 dark:bg-green-950 dark:hover:bg-green-900 border-green-400 dark:border-green-300' : ''
+        showCheckmark
+          ? 'bg-green-100 hover:bg-green-200 dark:bg-green-950 dark:hover:bg-green-900 border-green-400 dark:border-green-300'
+          : '',
       )}
       disabled={isLoading}
       onClick={triggerAction}
@@ -73,7 +72,9 @@ export const ActionButton = () => {
         <div
           className={cn(
             'flex items-center justify-between gap-2 transition-all duration-300 ease-in-out',
-            isSubmitting ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0',
+            isSubmitting
+              ? 'opacity-0 -translate-y-2'
+              : 'opacity-100 translate-y-0',
           )}
         >
           Action
@@ -91,7 +92,7 @@ export const ActionButton = () => {
             'transition-all duration-300 ease-in-out',
             !isSubmitting && 'opacity-0 translate-y-3',
             isSubmitting && !showCheckmark && 'opacity-100 translate-y-0',
-            showCheckmark && 'opacity-0 -translate-y-3'
+            showCheckmark && 'opacity-0 -translate-y-3',
           )}
         >
           <LoaderCircle className='size-4 animate-spin' />
@@ -104,7 +105,7 @@ export const ActionButton = () => {
           className={cn(
             'transition-all duration-300 ease-in-out',
             !showCheckmark && 'opacity-0 translate-y-3',
-            showCheckmark && 'opacity-100 translate-y-0 scale-125'
+            showCheckmark && 'opacity-100 translate-y-0 scale-125',
           )}
         >
           <CheckIcon className='size-4 text-green-500' />

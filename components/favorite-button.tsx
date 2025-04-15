@@ -46,7 +46,9 @@ export const FavoriteButton = () => {
             variant='outline'
             className={cn(
               'transition-colors duration-300 cursor-pointer',
-              isFavorite ? 'bg-red-100 hover:bg-red-200 dark:bg-red-950 dark:hover:bg-red-900 border-red-400 dark:border-red-600' : ''
+              isFavorite
+                ? 'bg-red-100 hover:bg-red-200 dark:bg-red-950 dark:hover:bg-red-900 border-red-400 dark:border-red-600'
+                : '',
             )}
           >
             <span className='relative inline-flex size-4 items-center justify-center'>
@@ -54,7 +56,7 @@ export const FavoriteButton = () => {
                 <span
                   className={cn(
                     'absolute inline-flex size-full rounded-full bg-red-400 transition-all duration-300 ease-in-out',
-                    isPinging ? 'animate-ping opacity-75' : 'opacity-0'
+                    isPinging ? 'animate-ping opacity-75' : 'opacity-0',
                   )}
                 />
                 <div

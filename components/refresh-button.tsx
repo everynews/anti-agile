@@ -55,7 +55,9 @@ export const RefreshButton = () => {
     size: 'icon' as const,
     className: cn(
       'overflow-hidden transition-colors duration-300 cursor-pointer',
-      showCheckmark ? 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-950 dark:hover:bg-blue-900 border-blue-400 dark:border-blue-600' : 'hover:bg-muted'
+      showCheckmark
+        ? 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-950 dark:hover:bg-blue-900 border-blue-400 dark:border-blue-600'
+        : 'hover:bg-muted',
     ),
   }
 

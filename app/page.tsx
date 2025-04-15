@@ -23,6 +23,7 @@ import {
 } from '@/components/ui/chart'
 import { Separator } from '@/components/ui/separator'
 import { YouTubeEmbed } from '@/components/youtube-embed'
+import { cn } from '@/lib/utils'
 import { TrendingUp } from 'lucide-react'
 import { Dancing_Script } from 'next/font/google'
 import Image from 'next/image'
@@ -52,7 +53,9 @@ export default function Page() {
               <ThemeToggle />
             </div>
           </CardTitle>
-          <CardDescription>April 11, 2025</CardDescription>
+          <CardDescription>
+            Written 100% by a human being. No LLM.
+          </CardDescription>
         </CardHeader>
         <CardContent className='space-y-6'>
           <p>
@@ -576,59 +579,23 @@ export default function Page() {
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
           >
-            I am going to bootstrap this anyways.
+            I am going to bootstrap this anyways... But here's how Vercel OSS
+            program can help.
           </h2>
-          <p>But here's how Vercel OSS program can help.</p>
-          <ul className='list-disc pl-6 space-y-2 mt-2'>
-            <li>
-              Based on my previous philosophies, I want to keep this available
-              to as many people as possible. In the v1 version, most of the
-              costs came from avid users in developing regions, such as South
-              East Asia or Africa. They loved the product because they could
-              follow Silicon Valley news at near-identical speed as San
-              Franciscans. The reader base is small but cost me a good chunk of
-              token money, which made me consider dropping support. However, I
-              remain committed to making this as i18n-native as possible.
-            </li>
-            <li>
-              I know and use the latest bleeding-edge technology, such as RSC,
-              to build this. While I cannot disclose the source code internal
-              web app that I built for my company, it loads 50M datapoints in
-              less than a second. I doubled down on understanding how Next.js
-              caching works and eventually led a whole project to build a
-              caching layer for the internal web app. While there are news
-              outlets that use Next.js, I can promise no single company will
-              know Next.js App Router Cachings and PPRs better than me. Here's a small
-              demo of directory navigation in my company's internal web app I
-              built. We had bunch of nested layers and we had to navigate them
-              quickly, and eventually I created this spacial cognitive design. I
-              think Vercel will like my work in the end.
-            </li>
-            <Card className='overflow-hidden w-full mx-auto'>
-            <div className='relative'>
-              <Image
-                unoptimized
-                src='/gifs/sliding-panes.gif'
-                width={480}
-                height={301}
-                alt='Sliding panes demonstration'
-                className='w-full'
-              />
-            </div>
-            <CardContent className='py-2'>
-              <p className='text-sm text-muted-foreground text-center'>
-                I am particularly proud of this ergonomic navigation + super fast loading.
-              </p>
-            </CardContent>
-          </Card>
-            <li>
-              I care about interactive interfaces and innovative UI/UX. I want to accelerate my ideation and prototyping
-              process, and give great examples of how to do it. Here are some components I built, with ergonomism in mind. 
-            </li>
-          
-          <Card className="w-full max-w-md mx-auto">
-            <CardContent className="flex flex-col items-center space-y-6 py-6">
-              <div className="flex flex-row justify-center gap-4 items-center">
+
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
+            I know what it's like to build satisfying interfaces.
+          </h3>
+          <p>
+            I just care about interactive interfaces and innovative UI/UX. I
+            want to accelerate my ideation and prototyping process, and give
+            great examples of how to do it. Here are some components I built,
+            with ergonomism in mind.
+          </p>
+
+          <Card className='w-full max-w-md mx-auto'>
+            <CardContent className='flex flex-col items-center space-y-6 py-6'>
+              <div className='flex flex-row justify-center gap-4 items-center'>
                 <Suspense fallback={<div>Loading actions...</div>}>
                   <ActionButton />
                 </Suspense>
@@ -641,46 +608,91 @@ export default function Page() {
               </div>
 
               <p className='text-sm text-muted-foreground text-center'>
-                Some of the components I built. Try them out!
+                Just so satisfying... both visually and performance-wise.
               </p>
             </CardContent>
           </Card>
-          </ul>
+
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
+            I know Next.js. Very well.
+          </h3>
+          <p>
+            I know and use the latest bleeding-edge technology, such as RSC, to
+            build this. While I cannot disclose the source code internal web app
+            that I built for my company, it loads 50M datapoints from archives
+            in Netherlands to Korea in less than a second. I doubled down on
+            understanding how Next.js caching works and eventually led a whole
+            project to build a caching layer for the internal web app. While
+            there are news outlets that use Next.js, I can promise no single
+            company will know Next.js App Router Cachings and PPRs better than
+            me. Here's a small demo of directory navigation in my company's
+            internal web app I built. We had bunch of nested layers and we had
+            to navigate them quickly, and eventually I created this spacial
+            cognitive design.
+          </p>
+
+          <Card className='overflow-hidden w-full mx-auto'>
+            <div className='relative'>
+              <Image
+                unoptimized
+                src='/gifs/sliding-panes.gif'
+                width={480}
+                height={301}
+                alt='Sliding panes demonstration'
+                className='w-full'
+              />
+            </div>
+            <CardContent className='py-2'>
+              <p className='text-sm text-muted-foreground text-center'>
+                Not only ergonomic, but also insanely fast. No loading at all.
+                (These are dummy data due to NDA, but prod is the same speed)
+              </p>
+            </CardContent>
+          </Card>
+
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
+            I am i18n-native. More than anyone.
+          </h3>
+          <p>
+            Based on my previous philosophies, I want to keep this available to
+            as many people as possible. In the v1 version, most of the costs
+            came from avid users in developing regions, such as South East Asia
+            or Africa. They loved the product because they could follow Silicon
+            Valley news at near-identical speed as San Franciscans. The reader
+            base is small but cost me a good chunk of token money, which made me
+            consider dropping support. However, I remain committed to making
+            this as i18n-native as possible.
+          </p>
+
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
           >
             So here's the deal.
           </h2>
 
-          <ul className='list-disc pl-6 space-y-2 mt-2'>
-            <li>
-              <strong>
-                I will finish building this by May 6th, and let people sign up.
-              </strong>
-              I understand you'd be concerned that I previously did not build
-              the app after winning a hackathon. But now I have better
-              understanding around everything and more importantly, I have
-              better self-discipline. Therefore, if I do not finish building the
-              app by the end of May 6th, I will refund your money and pass it to
-              the next candidate.
-            </li>
-            <li>
-              <strong>I will give more back to the community.</strong>{' '}
-              <Link
-                href='https://github.com/anaclumos?tab=sponsoring'
-                className='inline-flex items-center text-blue-500'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                I already sponsor more open-source projects than many of the
-                companies
-              </Link>
-              , only because I think they're cool. If you sponsor me with this
-              project, I will double down and even expand my current GitHub
-              Sponsor & new dependencies.
-            </li>
-          </ul>
-
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
+          I will finish building this by May 6th, and let people sign up.
+          </h3>
+          <p>
+            I understand you'd be concerned that I previously did not build the app after the previous hackathon. But now I have better understanding around everything and more importantly, I have better self-discipline. Therefore, if I do not finish building the app by the end of May 6th, I will refund your money and pass it to the next candidate, or donate to an OSS software of your choice.
+          </p>
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>During my builder journey, I will give more back to the community.</h3>
+          <p>
+            <Link
+              href='https://github.com/anaclumos?tab=sponsoring'
+              className='inline-flex items-center text-blue-500'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              I already sponsor more open-source projects than many of the companies
+            </Link>
+            , only because I think they're cool. If you sponsor me with this project, I will double down and even expand my current GitHub Sponsor & new dependencies.
+          </p>
+          <h2
+            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+          >
+            So...
+          </h2>
           <p>
             I totally understand I am in a unique position that makes it hard
             for Vercel to support me. I totally understand that. This is more of
