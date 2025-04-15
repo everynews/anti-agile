@@ -671,12 +671,19 @@ export default function Page() {
           </h2>
 
           <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
-          I will finish building this by May 6th, and let people sign up.
+            I will finish building this by May 6th, and let people sign up.
           </h3>
           <p>
-            I understand you'd be concerned that I previously did not build the app after the previous hackathon. But now I have better understanding around everything and more importantly, I have better self-discipline. Therefore, if I do not finish building the app by the end of May 6th, I will refund your money and pass it to the next candidate, or donate to an OSS software of your choice.
+            I understand you'd be concerned that I previously did not build the
+            app after the previous hackathon. But now I have better
+            understanding around everything and more importantly, I have better
+            self-discipline. Therefore, if I do not finish building the app by
+            the end of May 6th, I will refund your money and pass it to the next
+            candidate, or donate to an OSS software of your choice.
           </p>
-          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>During my builder journey, I will give more back to the community.</h3>
+          <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
+            During my builder journey, I will give more back to the community.
+          </h3>
           <p>
             <Link
               href='https://github.com/anaclumos?tab=sponsoring'
@@ -684,9 +691,12 @@ export default function Page() {
               target='_blank'
               rel='noopener noreferrer'
             >
-              I already sponsor more open-source projects than many of the companies
+              I already sponsor more open-source projects than many of the
+              companies
             </Link>
-            , only because I think they're cool. If you sponsor me with this project, I will double down and even expand my current GitHub Sponsor & new dependencies.
+            , only because I think they're cool. If you sponsor me with this
+            project, I will double down and even expand my current GitHub
+            Sponsor & new dependencies.
           </p>
           <h2
             className={`${dancingScript.className} text-3xl text-foreground inline-block`}
