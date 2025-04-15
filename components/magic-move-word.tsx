@@ -77,7 +77,7 @@ export const MagicMoveWord: FC<MagicMoveWordProps> = ({
 
   // Basic letter styling
   const letterWidth = 20
-  const letterSpacing = 2
+  const letterSpacing = 4
 
   // Calculate *separate* widths
   const scrambledWidth = scrambledWord.length * (letterWidth + letterSpacing)
@@ -134,7 +134,7 @@ export const MagicMoveWord: FC<MagicMoveWordProps> = ({
           return (
             <motion.div
               key={`${index}-${char}`}
-              className='absolute flex items-center justify-center text-lg font-medium text-gray-800 dark:text-gray-200 text-xl'
+              className='absolute flex items-center justify-center text-lg font-mono text-gray-800 dark:text-gray-200 text-xl bg-foreground/5'
               style={{
                 top: '50%',
                 left: fromX,
