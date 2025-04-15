@@ -297,7 +297,7 @@ export default function Page() {
             />
           </Suspense>
           <p>
-            To this day, I have gathered 2K daily readers and sent 1M emails so
+            To this day, I have gathered 2K daily users and sent 1M emails so
             far. Every day, the open rate was consistently{' '}
             <HighlightPopover
               width='w-lg'
