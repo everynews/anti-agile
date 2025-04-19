@@ -743,7 +743,7 @@ export default function Page() {
             stack, such as{' '}
             <HighlightPopover
               triggerContent='agentic feedback collecting'
-              popoverTitle='Agents Be Like:'
+              popoverTitle='Agents be like:'
               popoverContent={
                 <p className='text-muted-foreground line-height'>
                   <i>
