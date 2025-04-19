@@ -14,7 +14,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
@@ -36,8 +35,6 @@ const dancingScript = Dancing_Script({
   subsets: ['latin'],
   weight: ['700'],
 })
-
-// Move metadata to layout.tsx for server component support
 
 export default function Page() {
   return (
