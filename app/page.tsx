@@ -55,7 +55,17 @@ export default function Page() {
             </div>
           </CardTitle>
           <CardDescription>
-            Written 100% by a human being. No LLM.
+            <HighlightPopover
+              triggerContent='Written by a human, not LLMs'
+              popoverTitle="And That's a Flex These Days"
+              popoverContent={
+                <p className='text-muted-foreground line-height'>
+                  I wrote this by myself (only with basic spellcheck software).
+                  I hate the ChatGPT writings like <i>I delved into...</i> or{' '}
+                  <i>My endeavor...</i>.
+                </p>
+              }
+            />
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-6'>
@@ -108,7 +118,7 @@ export default function Page() {
           <Separator />
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             Circa 2023...
           </h2>
@@ -135,7 +145,7 @@ export default function Page() {
                     >
                       TikTok for Text
                     </Link>{' '}
-                    was a bad idea.
+                    was a bad idea
                   </h4>
                 }
                 popoverContent={
@@ -208,8 +218,8 @@ export default function Page() {
                   >
                     <h4 className='text-lg font-bold'>
                       <i>
-                        The future is already here. It's just not very evenly
-                        distributed.
+                        "The future is already here. It's just not very evenly
+                        distributed."
                       </i>
                     </h4>
                   </Link>
@@ -261,7 +271,7 @@ export default function Page() {
             translated them into{' '}
             <HighlightPopover
               triggerContent='30 different languages'
-              popoverTitle="This wasn't an arbitrary choice"
+              popoverTitle="This wasn't an Arbitrary Choice"
               popoverContent={
                 <p className='text-muted-foreground line-height'>
                   Non-Latin LLM tokens are expensive, so blindly following
@@ -280,7 +290,7 @@ export default function Page() {
           </p>
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             The reactions were simply amazing.
           </h2>
@@ -298,7 +308,7 @@ export default function Page() {
                   href='https://cho.sh/w/5ADC58'
                 >
                   <h4 className='text-lg font-bold'>
-                    Microsoft sent a cease and desist letter to me
+                    Microsoft Sent Me a Cease and Desist Letter
                   </h4>
                 </Link>
               }
@@ -335,119 +345,110 @@ export default function Page() {
             <HighlightPopover
               width='w-lg'
               triggerContent={<i>over 80%</i>}
-              popoverTitle='If you know newsletter marketing, these numbers are exceptional.'
+              popoverTitle='Open Rates & Click Rates'
               popoverContent={
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Open Rates & Click Rates</CardTitle>
-                    <CardDescription>
-                      Compared to Industry Standards
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ChartContainer
-                      config={{
-                        openRate: {
-                          label: 'Open Rate',
-                          color: 'hsl(var(--chart-1))',
-                        },
-                        clickRate: {
-                          label: 'Click Rate',
-                          color: 'hsl(var(--chart-5))',
-                        },
-                        Mine: {
+                <>
+                  <ChartContainer
+                    config={{
+                      openRate: {
+                        label: 'Open Rate',
+                        color: 'hsl(var(--chart-1))',
+                      },
+                      clickRate: {
+                        label: 'Click Rate',
+                        color: 'hsl(var(--chart-5))',
+                      },
+                      Mine: {
+                        label: 'Mine',
+                        color: 'hsl(var(--chart-1))',
+                      },
+                      Superb: {
+                        label: 'Superb',
+                        color: 'hsl(var(--chart-2))',
+                      },
+                      Decent: {
+                        label: 'Decent',
+                        color: 'hsl(var(--chart-3))',
+                      },
+                      Average: {
+                        label: 'Average',
+                        color: 'hsl(var(--chart-4))',
+                      },
+                    }}
+                  >
+                    <BarChart
+                      data={[
+                        {
                           label: 'Mine',
-                          color: 'hsl(var(--chart-1))',
+                          openRate: 80,
+                          clickRate: 20,
+                          fill: 'hsl(var(--chart-1))',
                         },
-                        Superb: {
+                        {
                           label: 'Superb',
-                          color: 'hsl(var(--chart-2))',
+                          openRate: 50,
+                          clickRate: 10,
+                          fill: 'hsl(var(--chart-2))',
                         },
-                        Decent: {
+                        {
                           label: 'Decent',
-                          color: 'hsl(var(--chart-3))',
+                          openRate: 20,
+                          clickRate: 4,
+                          fill: 'hsl(var(--chart-3))',
                         },
-                        Average: {
-                          label: 'Average',
-                          color: 'hsl(var(--chart-4))',
+                        {
+                          label: 'Avg',
+                          openRate: 15,
+                          clickRate: 2,
+                          fill: 'hsl(var(--chart-4))',
                         },
+                      ]}
+                      layout='vertical'
+                      margin={{
+                        left: 0,
                       }}
                     >
-                      <BarChart
-                        data={[
-                          {
-                            label: 'Mine',
-                            openRate: 80,
-                            clickRate: 20,
-                            fill: 'hsl(var(--chart-1))',
-                          },
-                          {
-                            label: 'Superb',
-                            openRate: 50,
-                            clickRate: 10,
-                            fill: 'hsl(var(--chart-2))',
-                          },
-                          {
-                            label: 'Decent',
-                            openRate: 20,
-                            clickRate: 4,
-                            fill: 'hsl(var(--chart-3))',
-                          },
-                          {
-                            label: 'Avg',
-                            openRate: 15,
-                            clickRate: 2,
-                            fill: 'hsl(var(--chart-4))',
-                          },
-                        ]}
+                      <YAxis
+                        dataKey='label'
+                        type='category'
+                        tickLine={false}
+                        tickMargin={10}
+                        axisLine={false}
+                      />
+                      <XAxis dataKey='openRate' type='number' hide />
+                      <ChartTooltip
+                        cursor={false}
+                        content={<ChartTooltipContent hideLabel />}
+                      />
+                      <Bar
+                        dataKey='openRate'
                         layout='vertical'
-                        margin={{
-                          left: 0,
-                        }}
-                      >
-                        <YAxis
-                          dataKey='label'
-                          type='category'
-                          tickLine={false}
-                          tickMargin={10}
-                          axisLine={false}
-                        />
-                        <XAxis dataKey='openRate' type='number' hide />
-                        <ChartTooltip
-                          cursor={false}
-                          content={<ChartTooltipContent hideLabel />}
-                        />
-                        <Bar
-                          dataKey='openRate'
-                          layout='vertical'
-                          radius={5}
-                          fill='hsl(var(--chart-1))'
-                        />
-                        <Bar
-                          dataKey='clickRate'
-                          layout='vertical'
-                          radius={5}
-                          fill='hsl(var(--chart-5))'
-                        />
-                      </BarChart>
-                    </ChartContainer>
-                  </CardContent>
-                  <CardFooter className='flex-col items-start gap-2 text-sm'>
-                    <div className='flex gap-2 font-medium leading-none'>
-                      10x the industry standard
-                      <TrendingUp className='h-4 w-4' />
-                    </div>
-                    <div className='leading-none text-muted-foreground'>
-                      80% open rate (industry average is 20%)
-                    </div>
-                    <div className='leading-none text-muted-foreground'>
-                      20% click rate (industry average is 2%)
-                    </div>
-                  </CardFooter>
-                </Card>
+                        radius={5}
+                        fill='hsl(var(--chart-1))'
+                      />
+                      <Bar
+                        dataKey='clickRate'
+                        layout='vertical'
+                        radius={5}
+                        fill='hsl(var(--chart-5))'
+                      />
+                    </BarChart>
+                  </ChartContainer>
+
+                  <div className='flex gap-2 font-medium leading-none'>
+                    10x the Industry Standard
+                    <TrendingUp className='h-4 w-4' />
+                  </div>
+                  <div className='leading-none text-muted-foreground'>
+                    80% open rate (industry average is 20%)
+                  </div>
+                  <div className='leading-none text-muted-foreground'>
+                    20% click rate (industry average is 2%)
+                  </div>
+                </>
               }
             />{' '}
-            every day—almost unheard of in the newsletter business.
+            every day—almost unheard of in the email business.
           </p>
           <div className='my-4 flex justify-center'>
             <Image
@@ -460,7 +461,7 @@ export default function Page() {
           </div>
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             People started requesting features.
           </h2>
@@ -491,7 +492,7 @@ export default function Page() {
           </Card>
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             That went only so far.
           </h2>
@@ -506,7 +507,7 @@ export default function Page() {
             Most importantly,{' '}
             <HighlightPopover
               triggerContent='vibe coding'
-              popoverTitle='Last Resort'
+              popoverTitle='To Be Extra Clear,'
               popoverContent={
                 <span className='text-muted-foreground'>
                   I'm not endorsing the lazy practice of throwing everything
@@ -523,7 +524,7 @@ export default function Page() {
           </p>
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             Full-time Work and Advances in Abstraction Layers
           </h2>
@@ -592,7 +593,7 @@ export default function Page() {
             <i>how</i> they are helpful.
           </p>
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             Then I remembered my abandoned brainchild.
           </h2>
@@ -604,7 +605,7 @@ export default function Page() {
             alerts. So here's the deal: I want to restart the work on this.
           </p>
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             I am going to bootstrap this anyways... But here's how Vercel OSS
             program can help.
@@ -614,18 +615,28 @@ export default function Page() {
             I know what it's like to build satisfying interfaces.
           </h3>
           <p>
-            I know and use the latest bleeding-edge technology, such as RSC, to
-            build this. While I cannot disclose the source code of the internal
-            web app I built for my company, it loads 50M data points from
-            archives in the Netherlands to Korea in less than a second. I
-            doubled down on understanding how Next.js caching works and
-            eventually led a project to build a caching layer for the internal
-            web app. While news outlets use Next.js, I can promise no company
-            will know Next.js App Router Cachings and PPRs better than I do.
-            Here's a small demo of directory navigation in the internal web app
-            I built for my company. We had a bunch of nested layers, and we had
-            to navigate them quickly, and eventually, I created this spatial
-            cognitive design.
+            Components deliver intent and experience. That's why Vercel's recent
+            move on{' '}
+            <HighlightPopover
+              triggerContent='Vercel is Buying All the Cool Component Libraries'
+              popoverTitle='Component Collection'
+              popoverContent={
+                <span className='text-muted-foreground'>
+                  Vercel bought Shadcn, then Tremor. What's next? Bet it's
+                  either Origin UI or even Radix themselves. Fun fact, is that I
+                  bought Tremor Pro License at $300 just two weeks before the
+                  aqucisition, which open-sourced everything, and they never
+                  gave me a refund!
+                </span>
+              }
+            />{' '}
+            is so interesting. However, due to the lack of proper view
+            transitions and stateful navigations, no component libraries match
+            iOS-level fluidity. That said, during my process, I want to build
+            open-source component libraries for others. This may take months and
+            years, but I want to accelerate my ideation and prototyping process
+            and give great examples back to the community. Here are some
+            components I built, with ergonomics in mind.
           </p>
 
           <Card className='w-full max-w-md mx-auto'>
@@ -711,7 +722,7 @@ export default function Page() {
           </p>
 
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             So here's the deal.
           </h2>
@@ -843,7 +854,7 @@ export default function Page() {
             journey.
           </p>
           <h2
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             So...
           </h2>
@@ -856,7 +867,7 @@ export default function Page() {
           </p>
           <p>Sincerely,</p>
           <span
-            className={`${dancingScript.className} text-3xl text-foreground inline-block`}
+            className={`${dancingScript.className} text-3xl text-foreground inline-block pt-6`}
           >
             Sunghyun Cho
           </span>
