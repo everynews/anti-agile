@@ -61,8 +61,7 @@ export default function Page() {
               popoverContent={
                 <p className='text-muted-foreground line-height'>
                   I wrote this by myself (only with basic spellcheck software).
-                  I hate the ChatGPT writings like <i>I delved into...</i> or{' '}
-                  <i>My endeavor...</i>.
+                  I hate the ChatGPT writings like <i>I delved into</i>... Yuck.
                 </p>
               }
             />
@@ -615,11 +614,10 @@ export default function Page() {
             I know what it's like to build satisfying interfaces.
           </h3>
           <p>
-            Components deliver intent and experience. That's why Vercel's recent
-            move on{' '}
+            Components deliver intent and experience. That's why Vercel's recent{' '}
             <HighlightPopover
-              triggerContent='Vercel is Buying All the Cool Component Libraries'
-              popoverTitle='Component Collection'
+              triggerContent="'gotta catch em all'"
+              popoverTitle='Vercel is Buying All the Cool Component Libraries'
               popoverContent={
                 <span className='text-muted-foreground'>
                   Vercel bought Shadcn, then Tremor. What's next? Bet it's
