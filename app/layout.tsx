@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     videos: [
       {
         url: '/antiagile.mp4',
-        width: 1920,
-        height: 1080,  
+        width: 3456,
+        height: 1984,  
       },
     ],
   },
