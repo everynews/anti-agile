@@ -266,7 +266,7 @@ export default function Page() {
             crude agent that ran a cron job on the most popular HN stories and
             translated them into{' '}
             <HighlightPopover
-              triggerContent='30 different languages'
+              triggerContent='30 different languages.'
               popoverTitle="This wasn't an Arbitrary Choice"
               popoverContent={
                 <p className='text-muted-foreground line-height'>

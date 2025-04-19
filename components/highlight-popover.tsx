@@ -8,6 +8,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
+import { Drawer } from 'vaul'
 
 interface HighlightPopoverProps {
   triggerContent: ReactNode
@@ -47,24 +48,68 @@ export const HighlightPopover = ({
   }, [triggerContent])
 
   return (
-    <Popover>
-      <PopoverTrigger
-        className={cn('cursor-pointer inline-block relative', highlightClass)}
-        type='button'
-      >
-        {triggerContent}
-      </PopoverTrigger>
-      <PopoverContent className='w-96' side={direction}>
-        <div className='space-y-2'>
-          {popoverTitle &&
-            (typeof popoverTitle === 'string' ? (
-              <h4 className='text-lg font-bold'>{popoverTitle}</h4>
-            ) : (
-              popoverTitle
-            ))}
-          {popoverContent}
-        </div>
-      </PopoverContent>
-    </Popover>
+    <>
+      <span className='hidden md:inline-block'>
+        <Popover>
+          <PopoverTrigger
+            className={cn(
+              'cursor-pointer inline-block relative',
+              highlightClass,
+            )}
+            type='button'
+          >
+            {triggerContent}
+          </PopoverTrigger>
+          <PopoverContent
+            className='w-96 md:w-96 sm:w-full sm:bottom-0 sm:left-0 sm:right-0 sm:fixed sm:rounded-b-none sm:border-b-0'
+            side={direction}
+            align='center'
+          >
+            <div className='space-y-2'>
+              {popoverTitle &&
+                (typeof popoverTitle === 'string' ? (
+                  <h4 className='text-lg font-bold'>{popoverTitle}</h4>
+                ) : (
+                  popoverTitle
+                ))}
+              {popoverContent}
+            </div>
+          </PopoverContent>
+        </Popover>
+      </span>
+      <span className='md:hidden'>
+        <Drawer.Root>
+          <Drawer.Trigger
+            className={cn(
+              'cursor-pointer inline-block relative',
+              highlightClass,
+            )}
+            type='button'
+          >
+            {triggerContent}
+          </Drawer.Trigger>
+          <Drawer.Portal>
+            <Drawer.Overlay className='fixed inset-0 bg-black/40' />
+            <Drawer.Content className='bg-background h-fit fixed bottom-0 left-0 right-0 outline-none p-4 pb-12'>
+              <div
+                aria-hidden
+                className='mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 mb-2'
+              />
+              <div className='space-y-2'>
+                {popoverTitle &&
+                  (typeof popoverTitle === 'string' ? (
+                    <Drawer.Title className='text-lg font-bold'>
+                      {popoverTitle}
+                    </Drawer.Title>
+                  ) : (
+                    popoverTitle
+                  ))}
+                {popoverContent}
+              </div>
+            </Drawer.Content>
+          </Drawer.Portal>
+        </Drawer.Root>
+      </span>
+    </>
   )
 }

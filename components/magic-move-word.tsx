@@ -92,7 +92,7 @@ export const MagicMoveWord: FC<MagicMoveWordProps> = ({
 
   return (
     <Card
-      className='inline-flex items-center justify-center p-2 relative cursor-pointer select-none'
+      className='inline-flex items-center justify-center p-2 relative cursor-pointer select-none overflow-hidden'
       style={{ width: '100%', height: 60 }}
       onClick={handleClick}
       onKeyUp={handleClick}

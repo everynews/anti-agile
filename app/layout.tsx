@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://antiagile.every.news'),
   title: "Dear Vercel, I'll quit being Anti-Agile",
   description: "An interactive essay on why I'll quit being Anti-Agile",
   openGraph: {
@@ -17,14 +18,14 @@ export const metadata: Metadata = {
         url: '/antiagile.png',
         width: 3456,
         height: 1984,
-        alt: 'Dear Vercel, I\'ll quit being Anti-Agile',
+        alt: "Dear Vercel, I'll quit being Anti-Agile",
       },
     ],
     videos: [
       {
         url: '/antiagile.mp4',
         width: 3456,
-        height: 1984,  
+        height: 1984,
       },
     ],
   },
