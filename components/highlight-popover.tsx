@@ -61,7 +61,7 @@ export const HighlightPopover = ({
             {triggerContent}
           </PopoverTrigger>
           <PopoverContent
-            className='w-96 md:w-96 sm:w-full sm:bottom-0 sm:left-0 sm:right-0 sm:fixed sm:rounded-b-none sm:border-b-0'
+            className='w-96 md:w-96'
             side={direction}
             align='center'
           >
