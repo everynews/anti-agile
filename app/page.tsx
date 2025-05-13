@@ -66,7 +66,7 @@ export default function Page() {
         </CardHeader>
         <CardContent className='space-y-6'>
           <Alert variant='destructive' className='w-full md:hidden'>
-            <AlertTitle>If I optimzie this for mobile</AlertTitle>
+            <AlertTitle>If I optimize this for mobile</AlertTitle>
             <AlertDescription>
               That means less building for the actual product. I'll put a nice
               Share button here for you to send it to your computer.
@@ -723,7 +723,23 @@ export default function Page() {
           </h2>
 
           <h3 className={cn('text-2xl font-semibold', dancingScript.className)}>
-            I will finish building this by May 6th, and let people sign up.
+            I will finish building this by
+            <HighlightPopover
+              direction='right'
+              triggerContent='May 6th'
+              popoverTitle={
+                <h4 className='text-lg font-bold'>Well, I got rejected</h4>
+              }
+              popoverContent={
+                <p className='text-muted-foreground line-height'>
+                  I got rejected so I kind of lost my confidence for a while;
+                  and I took a slightly slower but more sustainable approach to
+                  building this. I am still building this to this day, so please
+                  show me your support.
+                </p>
+              }
+            />
+            , and let people sign up.
           </h3>
           <p>
             I understand you'd be concerned that I did not build the app after
